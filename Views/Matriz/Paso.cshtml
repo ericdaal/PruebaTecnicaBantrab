@@ -6,6 +6,62 @@
 
 <h2>@Model.Titulo</h2>
 
+@if (Model.PasoActual > 10)
+{
+    <div class="mt-5 p-4 border rounded bg-light">
+        <h2 class="text-primary">✅ Proceso completado</h2>
+        <p class="lead">Haz clic en <strong>Reiniciar</strong> para volver a comenzar.</p>
+
+        <hr />
+        <h4>📋 Prueba Técnica Bantrab</h4>
+        <p>
+            Este proyecto es la resolución de una prueba técnica solicitada por <strong>BANTRAB</strong>, implementada con <strong>ASP.NET Core MVC</strong>.
+            Simula el procesamiento de una matriz paso a paso, permitiendo visualizar la lógica y transformación en cada etapa.
+        </p>
+
+        <h5>🚀 Tecnologías utilizadas</h5>
+        <ul>
+            <li>ASP.NET Core 7.0</li>
+            <li>C#</li>
+            <li>Razor Pages</li>
+            <li>Bootstrap 5</li>
+            <li>HTML/CSS</li>
+            <li>Git + GitHub</li>
+        </ul>
+
+        <h5>📌 Funcionalidad paso a paso</h5>
+        <ol>
+            <li>Mostrar matriz original.</li>
+            <li>Llenar columna 3 como suma de columnas 1 y 2.</li>
+            <li>Calcular el total de la columna 3.</li>
+            <li>Redimensionar la matriz a 12x4.</li>
+            <li>Eliminar valores de filas 1 y 2, columna 2.</li>
+            <li>Dividir ese total eliminado y distribuirlo en filas 3 a 7, columna 4.</li>
+            <li>Llenar columna 3 con la suma de columnas 1, 2 y 4.</li>
+            <li>Calcular el total de la columna 3.</li>
+            <li>Mostrar el total en pantalla.</li>
+            <li>Finalizar el proceso (bloqueando botón y ocultando matriz).</li>
+        </ol>
+
+        <h5>🧩 Cómo ejecutar</h5>
+        <ol>
+            <li>Clona el repositorio:
+                <pre><code>git clone https://github.com/ericdaal/PruebaTecnicaBantrab.git</code></pre>
+            </li>
+            <li>Abre el proyecto en Visual Studio o VS Code.</li>
+            <li>Restaura los paquetes y ejecuta:
+                <pre><code>dotnet restore
+dotnet run</code></pre>
+            </li>
+            <li>Accede desde tu navegador: <a href="http://localhost:5107">http://localhost:5107</a></li>
+        </ol>
+
+        <h5>✒️ Autor</h5>
+        <p>Desarrollado por <strong>Erick Alvarado</strong><br />
+        <a href="https://github.com/ericdaal" target="_blank">GitHub</a></p>
+    </div>
+}
+
 @if (Model.Matriz != null)
 {
     <table class="table table-bordered">
@@ -31,12 +87,13 @@
     </table>
 }
 
-<form asp-action="SiguientePaso" method="post">
-    <button class="btn btn-primary" @(Model.BloquearSiguiente ? "disabled" : "")
-        onclick="location.href='@Url.Action("SiguientePaso", "Matriz")'">
-        Siguiente paso
-    </button>
-
-</form>
+@if (!Model.BloquearSiguiente)
+{
+    <form asp-action="SiguientePaso" method="post">
+        <button class="btn btn-primary">
+            Siguiente paso
+        </button>
+    </form>
+}
 
 <a asp-action="Index" class="btn btn-secondary mt-3">Reiniciar</a>

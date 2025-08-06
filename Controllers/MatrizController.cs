@@ -119,13 +119,13 @@ namespace Nueva_carpeta.Controllers
                         viewModel.Titulo = $"Paso 10: Total final de columna 3 = {totalFinal}";
                         break;
                     case 10: // Finalizar
-                        viewModel.Titulo = "Proceso completado. Haz clic en Reiniciar para volver a empezar. Puedes descargar el codigo en el siguiente link https://github.com/ericdaal/PruebaTecnicaBantrab.git";
+                        viewModel.Titulo = "";
                         viewModel.Matriz = null; // Borra la matriz para no mostrarla
-                        viewModel.BloquearSiguiente = true; // Nueva propiedad para desactivar el botón
+                        viewModel.BloquearSiguiente = true;
                         break;
 
                     default:
-                        viewModel.Titulo = "Fin de los pasos o paso no implementado aún.";
+                        viewModel.Titulo = "Fin";
                         break;
                 }
             }
